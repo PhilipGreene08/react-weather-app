@@ -16,6 +16,7 @@ header {
   min-height: 5vh;
 }
 
+/* Main page */
 main {
   background-color: red;
 }
@@ -38,12 +39,19 @@ main {
 .hero-text {
   text-align: center;
   position: absolute;
-  top: 50%;
+  top: 12%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
 }
 
+.search-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Footer */
 footer {
   background-color: darkgray;
 }
