@@ -1,19 +1,21 @@
 import React from 'react';
 import { useState } from 'react';
 import { searchWeather } from '../../context/WeatherActions';
+import CurrentWeather from './CurrentWeather';
 
-function CordinateSearch() {
+function WeatherData() {
   //coordinates are a single state. setCoordinates uses latitude and longitude for values
   const [coordinates, setCoordinates] = useState({
     latitude: '',
     longitude: '',
   });
 
+  const [currentWeather, setCurrentWeather] = useState({});
+
   //handle change is fired off whenever a new number is entered into our cordinate form
   //We take the existing state of ...cordinates, then based on the target name, we set a new value
   //as determined by target value. NOTE: IDK why we need [] for target name
   const handleChange = (e) => {
-    console.log(e);
     setCoordinates({ ...coordinates, [e.target.name]: e.target.value });
   };
 
@@ -22,7 +24,12 @@ function CordinateSearch() {
     if (coordinates === '') {
       console.log(`enter coordinates`);
     } else {
-      await searchWeather(coordinates.latitude, coordinates.longitude);
+      const data = await searchWeather(
+        coordinates.longitude,
+        coordinates.latitude
+      );
+      console.log(data.current);
+      setCurrentWeather(data.current);
     }
   };
 
@@ -45,8 +52,9 @@ function CordinateSearch() {
         />
         <button type='submit'>Search</button>
       </form>
+      <CurrentWeather />
     </div>
   );
 }
 
-export default CordinateSearch;
+export default WeatherData;

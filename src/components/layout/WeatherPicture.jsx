@@ -1,12 +1,14 @@
 import rain from './assets/rain.jpg';
-import CordinateSearch from './CordinateSearch';
+import WeatherData from './WeatherData';
+
+import { useState } from 'react';
 
 function WeatherPicture() {
   return (
     <div className='picture-container'>
       <div className='hero-image'>
         <div className='hero-text'>
-          <CordinateSearch />
+          <WeatherData />
         </div>
       </div>
     </div>
