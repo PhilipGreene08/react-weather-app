@@ -1,14 +1,11 @@
 import React from 'react';
 import { useState } from 'react';
-import { searchWeather } from '../../context/WeatherActions';
+import { searchWeather, getWeatherCode } from '../../context/WeatherActions';
 import CurrentWeather from './CurrentWeather';
 
 function WeatherData() {
   //coordinates are a single state. setCoordinates uses latitude and longitude for values
-  const [coordinates, setCoordinates] = useState({
-    latitude: '',
-    longitude: '',
-  });
+  const [coordinates, setCoordinates] = useState({ latitude: 0, longitude: 0 });
 
   const [currentWeather, setCurrentWeather] = useState({});
 
@@ -28,31 +25,38 @@ function WeatherData() {
         coordinates.longitude,
         coordinates.latitude
       );
-      console.log(data.current);
-      setCurrentWeather(data.current);
+      setCurrentWeather(data);
+      setCoordinates({
+        latitude: 0,
+        longitude: 0,
+      });
+      getWeatherCode(data);
+      return currentWeather;
     }
   };
 
   return (
     <div>
       <form className='search-form form-control' onSubmit={handleSubmit}>
+        <label>Longitude</label>
         <input
           type='number'
+          value={coordinates.longitude}
           name='longitude'
-          placeholder='Enter Longitude'
           step='0.01'
           onChange={handleChange}
         />
+        <label>Latitude</label>
         <input
           type='number'
+          value={coordinates.latitude}
           name='latitude'
-          placeholder='Enter Latitude'
           step='0.01'
           onChange={handleChange}
         />
         <button type='submit'>Search</button>
       </form>
-      <CurrentWeather />
+      <CurrentWeather currentWeather={currentWeather} />
     </div>
   );
 }
