@@ -7,7 +7,12 @@ function WeatherData() {
   //coordinates are a single state. setCoordinates uses latitude and longitude for values
   const [coordinates, setCoordinates] = useState({ latitude: 0, longitude: 0 });
 
-  const [currentWeather, setCurrentWeather] = useState({});
+  const [currentWeather, setCurrentWeather] = useState({
+    data: {},
+    weatherIcon: '',
+  });
+
+  const [weatherIcon, setWeatherIcon] = useState('');
 
   //handle change is fired off whenever a new number is entered into our cordinate form
   //We take the existing state of ...cordinates, then based on the target name, we set a new value
@@ -25,12 +30,18 @@ function WeatherData() {
         coordinates.longitude,
         coordinates.latitude
       );
-      setCurrentWeather(data);
+      //console.log(data);
+      const weatherIcon = await getWeatherCode(data);
+      //console.log(weatherIcon);
+      setCurrentWeather({ data, weatherIcon });
+      console.log(currentWeather);
       setCoordinates({
         latitude: 0,
         longitude: 0,
       });
-      getWeatherCode(data);
+
+      //setWeatherIcon(weatherIcon);
+
       return currentWeather;
     }
   };
