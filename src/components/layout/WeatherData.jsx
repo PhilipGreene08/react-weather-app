@@ -30,11 +30,11 @@ function WeatherData() {
         coordinates.longitude,
         coordinates.latitude
       );
-      //console.log(data);
+
       const weatherIcon = await getWeatherCode(data);
-      //console.log(weatherIcon);
+
       setCurrentWeather({ data, weatherIcon });
-      console.log(currentWeather);
+
       setCoordinates({
         latitude: 0,
         longitude: 0,
@@ -49,23 +49,33 @@ function WeatherData() {
   return (
     <div>
       <form className='search-form form-control' onSubmit={handleSubmit}>
-        <label>Longitude</label>
-        <input
-          type='number'
-          value={coordinates.longitude}
-          name='longitude'
-          step='0.01'
-          onChange={handleChange}
-        />
-        <label>Latitude</label>
-        <input
-          type='number'
-          value={coordinates.latitude}
-          name='latitude'
-          step='0.01'
-          onChange={handleChange}
-        />
-        <button type='submit'>Search</button>
+        <div className='coordinate-container'>
+          <div>
+            <label className='coordinate-label'>Longitude</label>
+            <input
+              className='coordinate-input'
+              type='number'
+              value={coordinates.longitude}
+              name='longitude'
+              step='0.01'
+              onChange={handleChange}
+            />
+          </div>
+          <div>
+            <label className='coordinate-label'>Latitude</label>
+            <input
+              className='coordinate-input'
+              type='number'
+              value={coordinates.latitude}
+              name='latitude'
+              step='0.01'
+              onChange={handleChange}
+            />
+          </div>
+        </div>
+        <div className='search-container'>
+          <button type='submit'>Search</button>
+        </div>
       </form>
       <CurrentWeather currentWeather={currentWeather} />
     </div>

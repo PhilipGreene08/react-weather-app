@@ -8,7 +8,7 @@ export const searchWeather = async (longitude, latitude) => {
   );
 
   const data = await response.json();
-  console.log(data.current);
+
   return data.current;
 };
 
@@ -17,7 +17,7 @@ export const getWeatherCode = async (data) => {
   let response = await fetch(
     `http://openweathermap.org/img/wn/${iconCode}@2x.png`
   );
-  //console.log(response);
+
   const weatherIcon = response.url;
   return weatherIcon;
 };
