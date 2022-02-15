@@ -21,3 +21,13 @@ export const getWeatherCode = async (data) => {
   const weatherIcon = response.url;
   return weatherIcon;
 };
+
+export const getFutureWeather = async (longitude, latitude) => {
+  const response = await fetch(
+    `api.openweathermap.org/data/2.5/forecast/daily?lat=${latitude}&lon=${longitude}&cnt=7&appid=${API_KEY}`
+  );
+
+  const data = await response.json();
+  console.log(data);
+  return data;
+};

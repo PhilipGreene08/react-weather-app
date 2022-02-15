@@ -26,7 +26,7 @@ function Footer() {
             <a href='#'>Services</a>
           </li>
           <li className='list-inline-item'>
-            <a href='#'>About</a>
+            <a href='about'>About</a>
           </li>
         </ul>
         <p className='copyright'>Phil Greene - 2022</p>

@@ -5,7 +5,10 @@ import CurrentWeather from './CurrentWeather';
 
 function WeatherData() {
   //coordinates are a single state. setCoordinates uses latitude and longitude for values
-  const [coordinates, setCoordinates] = useState({ latitude: 0, longitude: 0 });
+  const [coordinates, setCoordinates] = useState({
+    latitude: '',
+    longitude: '',
+  });
 
   const [currentWeather, setCurrentWeather] = useState({
     data: {},
@@ -50,7 +53,7 @@ function WeatherData() {
     <div>
       <form className='search-form form-control' onSubmit={handleSubmit}>
         <div className='coordinate-container'>
-          <div>
+          <div className='coordinates'>
             <label className='coordinate-label'>Longitude</label>
             <input
               className='coordinate-input'
@@ -61,7 +64,7 @@ function WeatherData() {
               onChange={handleChange}
             />
           </div>
-          <div>
+          <div className='coordinates'>
             <label className='coordinate-label'>Latitude</label>
             <input
               className='coordinate-input'
