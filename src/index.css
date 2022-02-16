@@ -29,27 +29,31 @@ main {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url('/src/components/layout/assets/rain.jpg');
   height: 100%;
-  background-position: center;
+
+  background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
   min-height: 87vh;
 }
 
-.hero-text {
+/* .hero-text {
+  background-color: red;
   text-align: center;
   position: absolute;
-  top: 40%;
+  top: 30%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
-}
-
-/* .search-form {
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
 } */
+
+.hero-text {
+  height: 100%;
+  width: 100%;
+  color: white;
+  text-align: center;
+  position: absolute;
+}
 
 .coordinate-container {
   display: flex;

@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { searchWeather, getWeatherCode } from '../../context/WeatherActions';
 import CurrentWeather from './CurrentWeather';
+import FutureWeather from './FutureWeather';
 
 function WeatherData() {
   //coordinates are a single state. setCoordinates uses latitude and longitude for values
@@ -15,7 +16,9 @@ function WeatherData() {
     weatherIcon: '',
   });
 
-  const [weatherIcon, setWeatherIcon] = useState('');
+  //const [weatherIcon, setWeatherIcon] = useState(''); //do i need this?
+
+  // const [futureWeather, setFutureWeather] = useState([]);
 
   //handle change is fired off whenever a new number is entered into our cordinate form
   //We take the existing state of ...cordinates, then based on the target name, we set a new value
@@ -57,6 +60,7 @@ function WeatherData() {
             <label className='coordinate-label'>Longitude</label>
             <input
               className='coordinate-input'
+              placeholder='0'
               type='number'
               value={coordinates.longitude}
               name='longitude'
@@ -68,6 +72,7 @@ function WeatherData() {
             <label className='coordinate-label'>Latitude</label>
             <input
               className='coordinate-input'
+              placeholder='0'
               type='number'
               value={coordinates.latitude}
               name='latitude'
@@ -81,6 +86,7 @@ function WeatherData() {
         </div>
       </form>
       <CurrentWeather currentWeather={currentWeather} />
+      <FutureWeather coordinates={coordinates} />
     </div>
   );
 }

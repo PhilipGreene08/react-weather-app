@@ -1,5 +1,6 @@
 import rain from './assets/rain.jpg';
 import WeatherData from './WeatherData';
+import FutureWeather from './FutureWeather';
 
 import { useState } from 'react';
 
