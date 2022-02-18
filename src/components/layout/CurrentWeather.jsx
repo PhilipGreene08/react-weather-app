@@ -2,9 +2,9 @@ import React from 'react';
 //todo - bring in weather code from weatheractions
 
 function CurrentWeather({ currentWeather }) {
-  if (currentWeather.weatherIcon == '') {
-    console.log(`object`);
-  }
+  // if (currentWeather.weatherIcon == '') {
+  //   console.log(`object`);
+  // }
   return (
     <div className='current-container'>
       {currentWeather.weatherIcon !== '' ? (

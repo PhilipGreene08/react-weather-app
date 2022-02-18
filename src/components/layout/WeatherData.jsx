@@ -1,6 +1,10 @@
 import React from 'react';
 import { useState } from 'react';
-import { searchWeather, getWeatherCode } from '../../context/WeatherActions';
+import {
+  searchWeather,
+  getWeatherCode,
+  getFutureWeather,
+} from '../../context/WeatherActions';
 import CurrentWeather from './CurrentWeather';
 import FutureWeather from './FutureWeather';
 
@@ -16,6 +20,10 @@ function WeatherData() {
     weatherIcon: '',
   });
 
+  const [futureWeatherCoordinates, setFutureWeatherCoordinates] = useState({
+    longitude: 0,
+    latitude: 0,
+  });
   //const [weatherIcon, setWeatherIcon] = useState(''); //do i need this?
 
   // const [futureWeather, setFutureWeather] = useState([]);
@@ -25,6 +33,10 @@ function WeatherData() {
   //as determined by target value. NOTE: IDK why we need [] for target name
   const handleChange = (e) => {
     setCoordinates({ ...coordinates, [e.target.name]: e.target.value });
+    setFutureWeatherCoordinates({
+      ...coordinates,
+      [e.target.name]: e.target.value,
+    });
   };
 
   const handleSubmit = async (e) => {
@@ -39,12 +51,21 @@ function WeatherData() {
 
       const weatherIcon = await getWeatherCode(data);
 
+      const futureWeatherData = await getFutureWeather(
+        coordinates.longitude,
+        coordinates.latitude
+      );
+
+      console.log(futureWeatherData);
+
       setCurrentWeather({ data, weatherIcon });
 
       setCoordinates({
         latitude: 0,
         longitude: 0,
       });
+
+      setFutureWeatherCoordinates({ latitude: 0, longitude: 0 });
 
       //setWeatherIcon(weatherIcon);
 
@@ -86,7 +107,7 @@ function WeatherData() {
         </div>
       </form>
       <CurrentWeather currentWeather={currentWeather} />
-      <FutureWeather coordinates={coordinates} />
+      <FutureWeather futureWeather={futureWeatherCoordinates} />
     </div>
   );
 }

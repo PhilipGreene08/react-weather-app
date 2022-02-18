@@ -1,23 +1,11 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+import { handleChange } from './WeatherData';
 import { getFutureWeather } from '../../context/WeatherActions';
+import WeatherData from './WeatherData';
 
-function FutureWeather({ coordinates }) {
-  //coordinates are passed in as a prop
-  console.log(coordinates);
-  //use state is created with no coordinates
-  const [futureWeatherCoordinates, setFutureWeatherCoordinates] = useState({
-    longitude: 0,
-    latitude: 0,
-  });
-
-  //everytime  'coordinates' is changed in props, this fires off and sets the coorddinates
-  //that will be used in the WeatherActions context
-  useEffect(() => {
-    setFutureWeatherCoordinates(coordinates.longitude, coordinates.latitude);
-  }, [coordinates]);
-
-  console.log(futureWeatherCoordinates);
+function FutureWeather({ futureWeather }) {
+  console.log(futureWeather);
   return <div>FutureWeather</div>;
 }
 

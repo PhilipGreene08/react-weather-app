@@ -24,10 +24,10 @@ export const getWeatherCode = async (data) => {
 
 export const getFutureWeather = async (longitude, latitude) => {
   const response = await fetch(
-    `api.openweathermap.org/data/2.5/forecast/daily?lat=${latitude}&lon=${longitude}&cnt=7&appid=${API_KEY}`
+    `${WEATHER_URL}/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${API_KEY}`
   );
 
-  const data = await response.json();
-  console.log(data);
-  return data;
+  const futureWeatherData = await response.json();
+  console.log(futureWeatherData);
+  return futureWeatherData;
 };
