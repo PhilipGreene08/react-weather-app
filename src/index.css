@@ -74,6 +74,12 @@ main {
   outline: none;
   width: 50px;
 }
+.future-weather {
+  background-color: red;
+}
+.forecast-header {
+  color: white;
+}
 
 /* Footer */
 footer {

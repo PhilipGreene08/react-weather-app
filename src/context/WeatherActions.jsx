@@ -28,6 +28,5 @@ export const getFutureWeather = async (longitude, latitude) => {
   );
 
   const futureWeatherData = await response.json();
-  console.log(futureWeatherData);
   return futureWeatherData;
 };

@@ -21,13 +21,12 @@ function WeatherData() {
   });
 
   const [futureWeatherCoordinates, setFutureWeatherCoordinates] = useState({
-    longitude: 0,
-    latitude: 0,
+    longitude: '',
+    latitude: '',
   });
-  //const [weatherIcon, setWeatherIcon] = useState(''); //do i need this?
-
-  // const [futureWeather, setFutureWeather] = useState([]);
-
+  const [futureWeather, setFutureWeather] = useState({
+    futureData: {},
+  });
   //handle change is fired off whenever a new number is entered into our cordinate form
   //We take the existing state of ...cordinates, then based on the target name, we set a new value
   //as determined by target value. NOTE: IDK why we need [] for target name
@@ -56,20 +55,14 @@ function WeatherData() {
         coordinates.latitude
       );
 
-      console.log(futureWeatherData);
-
       setCurrentWeather({ data, weatherIcon });
-
+      setFutureWeather(futureWeatherData);
       setCoordinates({
         latitude: 0,
         longitude: 0,
       });
 
       setFutureWeatherCoordinates({ latitude: 0, longitude: 0 });
-
-      //setWeatherIcon(weatherIcon);
-
-      return currentWeather;
     }
   };
 
@@ -107,7 +100,7 @@ function WeatherData() {
         </div>
       </form>
       <CurrentWeather currentWeather={currentWeather} />
-      <FutureWeather futureWeather={futureWeatherCoordinates} />
+      <FutureWeather futureWeather={futureWeather} />
     </div>
   );
 }
