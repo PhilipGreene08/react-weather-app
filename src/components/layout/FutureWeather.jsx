@@ -7,7 +7,6 @@ import FiveDay from './FiveDay';
 import { Fragment } from 'react/cjs/react.production.min';
 
 function FutureWeather({ futureWeather }) {
-  console.log(futureWeather);
   return (
     <Fragment>
       <div>
