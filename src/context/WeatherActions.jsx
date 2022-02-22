@@ -24,7 +24,7 @@ export const getWeatherCode = async (data) => {
 
 export const getFutureWeather = async (longitude, latitude) => {
   const response = await fetch(
-    `${WEATHER_URL}/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${API_KEY}`
+    `${WEATHER_URL}/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=imperial&appid=${API_KEY}`
   );
 
   const futureWeatherData = await response.json();

@@ -1,32 +1,13 @@
 import React from 'react';
+
 import { Fragment } from 'react/cjs/react.production.min';
 
 function FiveDay({ futureWeather }) {
-  //const [fiveDayForecast, setFiveDayForecast] = useState({})
   const futureWeatherDataArray = [futureWeather];
   const forecast = futureWeatherDataArray[0].list;
-  //   const forecastArray = [];
-  //   const dateArray = [];
+
   const filteredForecast = [];
   //foreach forecast day, if the time is 12pm....
-  //   forecast.forEach((threeHourTime) => {
-  //     if (threeHourTime.dt_txt.endsWith('12:00:00')) {
-  //       //convert unix to milliseconds
-  //       let unix_timestamp = threeHourTime.dt;
-  //       const milliseconds = unix_timestamp * 1000;
-  //       const dateObject = new Date(milliseconds);
-  //       //push new date into dateArray array
-  //       dateArray.push(
-  //         dateObject.toLocaleDateString('en-US', {
-  //           month: 'short',
-  //           day: 'numeric',
-  //           //year: '2-digit',
-  //         })
-  //       );
-  //       forecastArray.push(threeHourTime);
-  //       //console.log(forecastArray);
-  //     }
-  //   });
 
   //1)filter the three hour blocks of forecast
   forecast.filter((threeHourBlock) => {
@@ -35,21 +16,20 @@ function FiveDay({ futureWeather }) {
     if (noonItem === true) {
       filteredForecast.push(threeHourBlock);
     }
-    //2) get the specific items out of the filtered array to place in the app
-    filteredForecast.forEach((day) => {
-      let unix_timestamp = day.dt;
-      const milliseconds = unix_timestamp * 1000;
-      const dateObject = new Date(milliseconds);
-
-      const forecastDate = dateObject.toLocaleDateString('en-US', {
-        month: 'short',
-        day: 'numeric',
-      });
-      let temp = day.main.temp;
-      let wind = day.wind.speed;
-      let precipitation = day.weather[0].description;
-    });
+    return filteredForecast;
   });
+
+  //2) get the specific time out of the filtered array to place in the app
+
+  const getForecastTime = (time) => {
+    const milliseconds = time * 1000;
+    const dateObject = new Date(milliseconds);
+    const forecastDate = dateObject.toLocaleDateString('en-US', {
+      month: 'short',
+      day: 'numeric',
+    });
+    return forecastDate;
+  };
 
   return (
     <Fragment>
@@ -57,14 +37,25 @@ function FiveDay({ futureWeather }) {
         <h3 className='forecast-header'>
           Forecast for {futureWeather.city.name}, {futureWeather.city.country}
         </h3>
-        <ul className='forecast-card'></ul>
+        <ul className='forecast-card'>
+          {filteredForecast.map((date) => (
+            <li key={date.dt}>
+              <h3>Date: {getForecastTime(date.dt)}</h3>
+              <p>
+                Temp: {date.main.temp} <span>&#8457;</span>
+              </p>
+              <p>Wind: {date.wind.speed} MPH</p>
+              <p>{date.weather[0].description}</p>
+            </li>
+          ))}
+        </ul>
       </div>
     </Fragment>
   );
 }
 
 export default FiveDay;
-// {filteredArray.map((date) => (
+// {filteredForecast.map((date) => (
 //     <li>
 //       <h3>{date}</h3>
 //       <p>weather temp</p>
