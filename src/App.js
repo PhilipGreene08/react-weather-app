@@ -10,13 +10,13 @@ function App() {
     <Router>
       <Header />
       <div className='weather-app'>
+        <Main />
         <Routes>
           <Route
             exact
             path='/'
             element={
               <Fragment>
-                <Main />
                 <Footer />
               </Fragment>
             }

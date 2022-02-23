@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { useState } from 'react';
 import {
   searchWeather,
@@ -67,7 +67,7 @@ function WeatherData() {
   };
 
   return (
-    <div>
+    <Fragment>
       <form className='search-form form-control' onSubmit={handleSubmit}>
         <div className='coordinate-container'>
           <div className='coordinates'>
@@ -101,7 +101,7 @@ function WeatherData() {
       </form>
       <CurrentWeather currentWeather={currentWeather} />
       <FutureWeather futureWeather={futureWeather} />
-    </div>
+    </Fragment>
   );
 }
 

@@ -39,8 +39,8 @@ function FiveDay({ futureWeather }) {
         </h3>
         <ul className='forecast-card'>
           {filteredForecast.map((date) => (
-            <li key={date.dt}>
-              <h3>Date: {getForecastTime(date.dt)}</h3>
+            <li className='list-item' key={date.dt}>
+              <h3>{getForecastTime(date.dt)}</h3>
               <p>
                 Temp: {date.main.temp} <span>&#8457;</span>
               </p>
