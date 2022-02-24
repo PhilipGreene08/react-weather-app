@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 
 function Footer() {
   return (
@@ -26,7 +27,7 @@ function Footer() {
             <a href='#'>Services</a>
           </li>
           <li className='list-inline-item'>
-            <a href='about'>About</a>
+            <Link to='/about'>About</Link>
           </li>
         </ul>
         <p className='copyright'>Phil Greene - 2022</p>

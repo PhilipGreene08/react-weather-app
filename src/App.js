@@ -12,20 +12,10 @@ function App() {
       <div className='weather-app'>
         <Main />
         <Routes>
-          <Route
-            exact
-            path='/'
-            element={
-              <Fragment>
-                <Footer />
-              </Fragment>
-            }
-          ></Route>
-
-          <Route exact path='/about' element={<AboutPage />}>
-            This is the about Route
-          </Route>
+          <Route path='/' element={<Fragment></Fragment>} />
+          <Route path='/about' element={<AboutPage />} />
         </Routes>
+        <Footer />
       </div>
     </Router>
   );

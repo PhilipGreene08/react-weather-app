@@ -1,8 +1,8 @@
-import rain from './assets/rain.jpg';
+// import rain from './assets/rain.jpg';
 import WeatherData from './WeatherData';
-import FutureWeather from './FutureWeather';
+// import FutureWeather from './FutureWeather';
 
-import { useState } from 'react';
+// import { useState } from 'react';
 
 function WeatherPicture() {
   return (

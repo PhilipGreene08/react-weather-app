@@ -8,7 +8,11 @@ html {
 }
 body {
   min-height: 100%;
+  margin-bottom: -50px;
   background-color: white;
+}
+body::after {
+  height: 50px;
 }
 
 header {
@@ -19,7 +23,21 @@ header {
 }
 
 li {
+  margin-top: 10px;
+  margin-bottom: 10px;
   list-style: none;
+}
+
+button {
+  color: #fff;
+  font-family: sans-serif;
+  font-weight: bold;
+  text-align: center;
+  background-color: transparent;
+  margin: 10px;
+  width: 75px;
+  height: 35px;
+  border: 1px solid #fff;
 }
 
 /* Main page */
@@ -40,7 +58,7 @@ li {
   position: relative;
   height: 100vh;
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url('/src/components/layout/assets/rain.jpg');
+    url('/src/components/layout/assets/clear-sky.jpg');
 
   overflow: hidden;
   background-position: center center;
@@ -96,6 +114,10 @@ li {
 /* List Forecast*/
 .forecast-header {
   color: white;
+  border-top: 1px white solid;
+  border-bottom: 1px white solid;
+  margin: 10px;
+  padding: 5px;
 }
 
 .forecast-card {
@@ -109,14 +131,24 @@ li {
 
 .list-item {
   border-radius: 10px;
-  width: 150px;
-  max-height: 100px;
-  border: 1px black solid;
+  width: 170px;
+  height: 170px;
+  border: 1px white solid;
+  padding: 5px;
+}
+
+.list-item p {
+  padding: 5px;
+  text-transform: capitalize;
+}
+
+.list-item h3 {
+  border-bottom: 1px white solid;
 }
 
 /* Footer */
 footer {
-  /* position: sticky; */
+  height: 50px;
   background-color: darkgray;
 }
 
@@ -137,6 +169,7 @@ footer {
   body {
     font-size: medium;
     min-height: 100%;
+    font-size: 0.83em;
   }
   main {
     min-height: 100%;
@@ -173,13 +206,25 @@ footer {
     width: 75px;
   }
 
+  .list-item {
+    border-radius: 10px;
+    width: 100px;
+    min-height: 100px;
+    border: 1px white solid;
+    padding: 5px;
+  }
+
+  /* .current-weather-output {
+    font-size: 0.83em;
+  } */
+
   footer {
     /* display: block; */
     text-align: center;
     font-size: 0.75em;
     bottom: 0;
     width: 100%;
-    height: 30px;
+    height: 50px;
     position: relative;
   }
 
@@ -193,6 +238,13 @@ footer {
   body {
     font-size: medium;
     min-height: 100%;
+  }
+
+  .coordinate-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
   }
   .forecast-card {
     display: flex;

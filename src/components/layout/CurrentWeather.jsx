@@ -12,13 +12,13 @@ function CurrentWeather({ currentWeather }) {
             {currentWeather.clouds >= 50 ? <h5>Cloudy</h5> : <h5>Beautiful</h5>}
           </div>
 
-          <h5>
+          <div className='current-weather-output'>
             <p>
               Temperature: {currentWeather.data.temp} <span>&#8457;</span>
             </p>
             <p>Wind Speed: {currentWeather.data.wind_speed} MPH</p>
             <p>Wind Gusts Up To: {currentWeather.data.wind_gust} MPH</p>
-          </h5>
+          </div>
         </div>
       ) : (
         <h5>Enter Coordinates</h5>
