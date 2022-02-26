@@ -21,11 +21,9 @@ function Footer() {
         </div>
         <ul className='list-inline'>
           <li className='list-inline-item'>
-            <a href='#'>Home</a>
+            <Link to='/'>Home</Link>
           </li>
-          <li className='list-inline-item'>
-            <a href='#'>Services</a>
-          </li>
+
           <li className='list-inline-item'>
             <Link to='/about'>About</Link>
           </li>
